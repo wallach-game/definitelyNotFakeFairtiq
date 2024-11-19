@@ -14,6 +14,7 @@ export class AppComp extends HTMLElement {
         this.shadowRoot.innerHTML =
             `
             <header-comp></header-comp>
+            <img src="./src/barcode.gif">
             <station-comp></station-comp>
             <slider-comp></slider-comp>
             `;

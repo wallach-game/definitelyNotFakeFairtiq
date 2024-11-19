@@ -4,6 +4,7 @@ export class HeaderElem extends HTMLElement {
         super();
         this.headerDiv = document.createElement("a");
         this.userName = "";
+        this.menu = document.createElement("A");
         this.attachShadow({ mode: 'open' });
     }
     connectedCallback() {
@@ -11,11 +12,11 @@ export class HeaderElem extends HTMLElement {
             `
             <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
             <div id="header">
-            <i class="material-icons" style="color: white; margin-left:0.5em">menu</i>
+            <i id="menu-btn" class="material-icons" style="color: white; margin-left:0.5em">menu</i>
             <img src="./src/logo.svg" alt="" srcset="">
             <i class="material-icons" style="color: white; rotate: -15deg; margin-right:0.5em" >notifications</i>
             </div>
-            <span id="userName">Jiří</span>
+            <span id="userName">userName</span>
             `;
         this.initializeComponent();
     }
@@ -38,6 +39,13 @@ export class HeaderElem extends HTMLElement {
         this.shadowRoot.getElementById("userName").style.marginTop = "0.4em";
         this.headerDiv.querySelector("img").style.height = "30%";
         this.headerDiv.querySelector("img").style.marginRight = "calc(100vw/3)";
+        this.shadowRoot.getElementById("menu-btn").addEventListener("click", () => { this.MenuClickFnc(); });
+        this.menu = document.getElementById("menu");
+    }
+    MenuClickFnc() {
+        //brb
+        console.log("trying to change state");
+        this.menu.changeState();
     }
 }
 UIComponents.RegisterCustomUIComponent("header-comp", HeaderElem);

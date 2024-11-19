@@ -39,6 +39,7 @@ export class SliderComp extends HTMLElement {
         this.state = !this.state;
         console.log(`${parseFloat(this.box.style.width) - 1.9}em`);
         this.kolo.style.marginLeft = this.state ? `calc(${this.sliderWidth}px - 3.8em)` : "0.1em";
+        this.kolo.querySelector("div")!.style.rotate = this.state ? "180deg" : "0deg";
     }
 
 
@@ -74,6 +75,7 @@ export class SliderComp extends HTMLElement {
         this.kolo.querySelector("div")!.style.fontSize = "2em";
         this.kolo.querySelector("div")!.style.rotate = "";
         this.kolo.querySelector("div")!.style.borderRadius = "4em";
+        this.kolo.querySelector("div")!.style.transition = "rotate 1s ease";
 
 
 

@@ -1,8 +1,10 @@
 import { UIComponents } from "../ts_ui_fw/UIComponents.js";
+import { Menu } from "./Menu.js"
 export class HeaderElem extends HTMLElement {
 
     headerDiv: HTMLElement = document.createElement("a");
     userName: string = "";
+    menu: Menu = document.createElement("A") as Menu;
 
     constructor() {
         super();
@@ -15,11 +17,11 @@ export class HeaderElem extends HTMLElement {
             `
             <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
             <div id="header">
-            <i class="material-icons" style="color: white; margin-left:0.5em">menu</i>
+            <i id="menu-btn" class="material-icons" style="color: white; margin-left:0.5em">menu</i>
             <img src="./src/logo.svg" alt="" srcset="">
             <i class="material-icons" style="color: white; rotate: -15deg; margin-right:0.5em" >notifications</i>
             </div>
-            <span id="userName">Jiří</span>
+            <span id="userName">userName</span>
             `;
             this.initializeComponent();
 
@@ -47,6 +49,16 @@ export class HeaderElem extends HTMLElement {
 
         this.headerDiv.querySelector("img")!.style.height = "30%";
         this.headerDiv.querySelector("img")!.style.marginRight = "calc(100vw/3)";
+
+        this.shadowRoot!.getElementById("menu-btn")!.addEventListener("click",() => { this.MenuClickFnc()});
+        this.menu = document.getElementById("menu") as Menu;
+    }
+
+    MenuClickFnc()
+    {
+        //brb
+        console.log("trying to change state");
+        this.menu.changeState();
     }
 
     }
